@@ -59,3 +59,102 @@ During development in the automated environment, there were persistent issues in
     ```
 
 These components have been coded with the assumption that these dependencies can be made available in the build environment.
+
+## Local Setup, Dependency Installation, and Testing
+
+This section provides guidance for setting up the project locally, installing the aforementioned missing dependencies, and performing basic testing.
+
+**1. Clone the Repository:**
+
+First, clone this repository to your local machine using your preferred method (HTTPS or SSH).
+```bash
+git clone <repository_url>
+cd GigAssistant
+```
+(Replace `<repository_url>` with the actual URL of this repository).
+
+**2. Install Base Dependencies:**
+
+If not already done, or to ensure all base dependencies from `package.json` are installed:
+```bash
+npm install
+# or
+# yarn install
+```
+
+**3. Manually Install Missing Dependencies:**
+
+Due to issues in the automated development environment, several key dependencies were not installed. You **must** install them manually for full functionality:
+
+*   **For Navigation (Stack Navigator):**
+    ```bash
+    npx expo install @react-navigation/stack react-native-safe-area-context react-native-screens
+    ```
+*   **For Calendar Picker:**
+    ```bash
+    npx expo install react-native-modal-datetime-picker @react-native-community/datetimepicker
+    ```
+*   **For Native Checkbox in Task Items (Optional):**
+    If you wish to use native checkboxes instead of the textual `[x]`/`[ ]`:
+    ```bash
+    npx expo install expo-checkbox
+    ```
+    (Remember to modify `components/TaskItem.js` to use the `Checkbox` component from `expo-checkbox` if you install this).
+
+**4. Run the Application:**
+
+Once all dependencies are installed, you can start the Expo development server:
+```bash
+npx expo start
+```
+This will typically open a new tab in your web browser with the Expo Developer Tools.
+
+**5. Testing with Expo Go:**
+
+*   Install the "Expo Go" app on your iOS or Android physical device.
+*   Scan the QR code displayed in the Expo Developer Tools (or in your terminal) using the Expo Go app.
+*   This will load and run the application on your device.
+
+**Core Functionalities to Test:**
+
+Ensure the following features work as expected:
+
+*   **Onboarding:**
+    *   [ ] App shows onboarding screens on first launch (Note: AsyncStorage might need to be cleared to simulate first launch if you've run it before).
+    *   [ ] Swiping through onboarding screens works.
+    *   [ ] "Done" button on onboarding leads to the main app.
+*   **Rehearsal Management (CRUD & Navigation):**
+    *   [ ] **View List:** `RehearsalScreen` loads and displays rehearsals from AsyncStorage (initially empty).
+    *   [ ] **Add:** Tap FAB -> "New Rehearsal" -> `AddEditRehearsalScreen` opens.
+    *   [ ] Fill rehearsal details (name, date - currently text input, location).
+    *   [ ] Add multiple tasks to the rehearsal.
+    *   [ ] Toggle task status (should use textual `[ ]` or `[x]`).
+    *   [ ] Save rehearsal -> Navigates back to `RehearsalScreen`.
+    *   [ ] New rehearsal appears in the list and persists after app restart.
+    *   [ ] **Edit:** Tap a rehearsal card -> `AddEditRehearsalScreen` opens with pre-filled data.
+    *   [ ] Modify details/tasks -> Update rehearsal -> Navigates back.
+    *   [ ] Changes are reflected in the list and persist.
+    *   [ ] **Delete:** From edit screen -> Delete rehearsal (with confirmation) -> Navigates back.
+    *   [ ] Rehearsal is removed from the list and AsyncStorage.
+*   **Gig Management (CRUD & Navigation):**
+    *   [ ] **View List:** `GigsScreen` loads and displays gigs from AsyncStorage (initially empty).
+    *   [ ] **Add:** Tap FAB -> "New Gig" -> `AddEditGigScreen` opens.
+    *   [ ] Fill gig details (date - text input, call time - text input, venue name, address, contact, compensation, notes).
+    *   [ ] Save gig -> Navigates back to `GigsScreen`.
+    *   [ ] New gig appears in the list (sorted by newest date first) and persists.
+    *   [ ] **Edit:** Tap a gig card -> `AddEditGigScreen` opens with pre-filled data.
+    *   [ ] Modify details -> Update gig -> Navigates back.
+    *   [ ] Changes are reflected in the list and persist.
+    *   [ ] **Delete:** From edit screen -> Delete gig (with confirmation) -> Navigates back.
+    *   [ ] Gig is removed from the list and AsyncStorage.
+*   **Navigation & UI:**
+    *   [ ] Bottom tab navigation between "Rehearsals" and "Gigs" screens works.
+    *   [ ] Add/Edit screens have a functional back button (from Stack Navigator).
+    *   [ ] Form inputs are usable.
+    *   [ ] `CustomButton` is styled and functional.
+    *   [ ] Empty list messages appear correctly.
+    *   [ ] `RehearsalCard` and `GigCard` display information correctly.
+
+**Note on `CalendarPicker.js` and `TaskItem.js` (Checkbox):**
+*   If you installed the dependencies for `CalendarPicker.js`, you would need to integrate it into `AddEditRehearsalScreen.js` and `AddEditGigScreen.js` (replacing the text inputs for dates) for it to be testable.
+*   If you installed `expo-checkbox` and modified `TaskItem.js`, verify the native checkbox functionality. Otherwise, test the textual checkbox.
