@@ -3,8 +3,8 @@ import React from 'react';
 import { TouchableOpacity, View, Text, StyleSheet, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native'; // Import useNavigation
 
-const FloatingActionButton = () => { // Removed navigation prop
-  const navigation = useNavigation(); // Use the hook
+const FloatingActionButton = () => {
+  const navigation = useNavigation();
 
   const showOptions = () => {
     Alert.alert(
@@ -14,17 +14,15 @@ const FloatingActionButton = () => { // Removed navigation prop
         {
           text: "New Rehearsal",
           onPress: () => {
-            // TODO: Navigate to AddEditRehearsalScreen
-            console.log("New Rehearsal pressed");
-            // navigation.navigate('AddEditRehearsalScreen'); // Example navigation
+            // Screen name should match Stack.Screen name in AppNavigator.js
+            navigation.navigate('AddEditRehearsalScreen');
           },
         },
         {
           text: "New Gig",
           onPress: () => {
-            // TODO: Navigate to AddEditGigScreen
-            console.log("New Gig pressed");
-            // navigation.navigate('AddEditGigScreen'); // Example navigation
+            // Screen name should match Stack.Screen name in AppNavigator.js
+            navigation.navigate('AddEditGigScreen');
           },
         },
         {
