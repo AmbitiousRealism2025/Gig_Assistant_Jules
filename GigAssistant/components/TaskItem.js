@@ -1,6 +1,7 @@
 // GigAssistant/components/TaskItem.js
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import Checkbox from 'expo-checkbox';
 
 const TaskItem = ({ task, onToggleStatus }) => {
   if (!task) {
@@ -11,9 +12,11 @@ const TaskItem = ({ task, onToggleStatus }) => {
 
   return (
     <TouchableOpacity onPress={() => onToggleStatus(task.id)} style={styles.taskItemContainer}>
-      <Text style={styles.checkboxText}>
-        {isCompleted ? '[x]' : '[ ]'}
-      </Text>
+      <Checkbox
+        value={isCompleted}
+        onValueChange={() => onToggleStatus(task.id)}
+        style={styles.checkbox}
+      />
       <View style={styles.textContainer}>
         <Text style={[styles.title, isCompleted && styles.completedTitle]}>
           {task.title}
@@ -34,10 +37,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
   },
-  checkboxText: {
+  checkbox: {
     marginRight: 15,
-    fontSize: 18, // Made checkbox text a bit larger
-    color: '#333',
   },
   textContainer: {
     flex: 1,
