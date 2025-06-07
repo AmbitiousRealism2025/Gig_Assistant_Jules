@@ -111,9 +111,15 @@ This will typically open a new tab in your web browser with the Expo Developer T
 
 **5. Testing with Expo Go:**
 
-*   Install the "Expo Go" app on your iOS or Android physical device.
-*   Scan the QR code displayed in the Expo Developer Tools (or in your terminal) using the Expo Go app.
-*   This will load and run the application on your device.
+1. Install the **Expo Go** app from the iOS App Store or Google Play Store.
+2. In your project directory run:
+   ```bash
+   npx expo start
+   ```
+   This launches the Expo development server and should open the Expo Developer Tools in your browser. If it does not, navigate to [http://localhost:19002](http://localhost:19002) manually.
+3. Make sure your mobile device is connected to the **same Wi‑Fi network** as your computer.
+4. In Expo Go choose **"Scan QR Code"** and scan the QR code displayed in the Developer Tools (or in your terminal).
+5. The Gig Assistant application will then load and run on your device.
 
 **Core Functionalities to Test:**
 
