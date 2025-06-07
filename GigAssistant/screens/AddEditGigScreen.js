@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, StyleSheet, ScrollView, Platform, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import CustomButton from '../../components/CustomButton';
+import CustomButton from '../components/CustomButton';
 
 const GIGS_STORAGE_KEY = '@GigAssistant:gigs';
 

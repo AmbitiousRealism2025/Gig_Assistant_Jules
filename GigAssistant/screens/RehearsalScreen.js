@@ -1,7 +1,7 @@
 // GigAssistant/screens/RehearsalScreen.js
 import React, { useState, useCallback } from 'react';
 import { View, FlatList, StyleSheet, Text, Alert } from 'react-native'; // Added Alert
-import RehearsalCard from '../../components/RehearsalCard';
+import RehearsalCard from '../components/RehearsalCard';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 // import CustomButton from '../../components/CustomButton'; // Only if using extra buttons like "Clear All"

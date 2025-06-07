@@ -1,7 +1,7 @@
 // GigAssistant/screens/GigsScreen.js
 import React, { useState, useCallback } from 'react';
 import { View, FlatList, StyleSheet, Text, Alert } from 'react-native';
-import GigCard from '../../components/GigCard';
+import GigCard from '../components/GigCard';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 
