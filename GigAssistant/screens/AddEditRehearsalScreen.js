@@ -1,8 +1,8 @@
 // GigAssistant/screens/AddEditRehearsalScreen.js
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button as NativeButton, StyleSheet, Platform, FlatList, ScrollView, Alert } from 'react-native';
-import TaskItem from '../../components/TaskItem';
-import CustomButton from '../../components/CustomButton'; // Using CustomButton
+import TaskItem from '../components/TaskItem';
+import CustomButton from '../components/CustomButton'; // Using CustomButton
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const REHEARSALS_STORAGE_KEY = '@GigAssistant:rehearsals';
